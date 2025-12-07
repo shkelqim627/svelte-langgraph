@@ -3,14 +3,7 @@
     import { ThumbsUpOutline, ThumbsDownOutline } from 'flowbite-svelte-icons';
     import type { BaseMessage } from '$lib/langgraph/types';
     import * as m from '$lib/paraglide/messages.js';
-
-    // IMPORT ALL TOOLTIP COMPONENTS, INCLUDING THE PROVIDER
-    import {
-        Tooltip,
-        TooltipTrigger,
-        TooltipContent,
-        TooltipProvider
-    } from '$lib/components/ui/tooltip/index.js';
+    import { Tooltip, TooltipTrigger, TooltipContent } from '$lib/components/ui/tooltip/index.js';
 
     interface Props {
         message: BaseMessage;
@@ -27,35 +20,33 @@
     }
 </script>
 
-<TooltipProvider>
-    <div class="ml-2 flex gap-1 border-l border-gray-300 pl-2 dark:border-gray-600">
-        <Tooltip>
-            <TooltipTrigger>
-                <Button
-                        onclick={() => handleFeedback('up')}
-                        class="p-1.5! {feedbackGiven === 'up' ? 'bg-gray-200 dark:bg-gray-700' : ''}"
-                        color="alternative"
-                        size="xs"
-                        title={m.message_feedback_good()}
-                >
-                    <ThumbsUpOutline size="xs" />
-                </Button>
-            </TooltipTrigger>
-            <TooltipContent>Coming Soon !</TooltipContent>
-        </Tooltip>
-        <Tooltip>
-            <TooltipTrigger>
-                <Button
-                        onclick={() => handleFeedback('down')}
-                        class="p-1.5! {feedbackGiven === 'down' ? 'bg-gray-200 dark:bg-gray-700' : ''}"
-                        color="alternative"
-                        size="xs"
-                        title={m.message_feedback_bad()}
-                >
-                    <ThumbsDownOutline size="xs" />
-                </Button>
-            </TooltipTrigger>
-            <TooltipContent>Coming Soon !</TooltipContent>
-        </Tooltip>
-    </div>
-</TooltipProvider>
+<div class="ml-2 flex gap-1 border-l border-gray-300 pl-2 dark:border-gray-600">
+    <Tooltip>
+        <TooltipTrigger>
+            <Button
+                    onclick={() => handleFeedback('up')}
+                    class="p-1.5! {feedbackGiven === 'up' ? 'bg-gray-200 dark:bg-gray-700' : ''}"
+                    color="alternative"
+                    size="xs"
+                    title={m.message_feedback_good()}
+            >
+                <ThumbsUpOutline size="xs" />
+            </Button>
+        </TooltipTrigger>
+        <TooltipContent>Coming Soon !</TooltipContent>
+    </Tooltip>
+    <Tooltip>
+        <TooltipTrigger>
+            <Button
+                    onclick={() => handleFeedback('down')}
+                    class="p-1.5! {feedbackGiven === 'down' ? 'bg-gray-200 dark:bg-gray-700' : ''}"
+                    color="alternative"
+                    size="xs"
+                    title={m.message_feedback_bad()}
+            >
+                <ThumbsDownOutline size="xs" />
+            </Button>
+        </TooltipTrigger>
+        <TooltipContent>Coming Soon !</TooltipContent>
+    </Tooltip>
+</div>
